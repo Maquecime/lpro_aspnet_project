@@ -1,0 +1,29 @@
+﻿<h2>Eleves</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Liste des élèves
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+               <tr>
+                   <th>Nom</th>
+                   <th>Prenom</th>
+                   <th>Date de Naissance</th>
+               </tr> 
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in eleves">
+                    <td>{{ e.Nom }}</td>
+                    <td>{{ e.Prenom }}</td>
+                    <td>{{ e.DateNaissance }}</td>
+                </tr>
+                <tr ng-if="!eleves || eleves.length == 0">
+                    <td colspan="3" style="text-align:center;">
+                        Aucun Eleve à afficher
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
