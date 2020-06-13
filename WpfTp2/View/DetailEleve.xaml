@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="WpfTp2.View.DetailEleve"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">FICHE ELEVE</Label>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
+            <Label>Nom</Label>
+            <TextBox Text="{Binding Nom}"></TextBox>
+            <Label>Prenom</Label>
+            <TextBox Text="{Binding Prenom}"></TextBox>
+            <Label>Moyenne</Label>
+            <TextBlock Text="{Binding Moyenne}"></TextBlock>
+            <Label>Nombre d'absences</Label>
+            <TextBlock Text="{Binding NbAbsences}"></TextBlock>
+        </StackPanel>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">Notes</Label>
+        <Button Grid.Column="3" Margin="5" Grid.Row="2" FontSize="12px" Command="{Binding AddNoteOperation}">+</Button>
+    </Grid>
+</UserControl>
