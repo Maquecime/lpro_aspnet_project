@@ -20,7 +20,7 @@ namespace BusinessLayer.ProjectNet.Queries
 
         public IQueryable<Eleve> GetAll()
         {
-            return _context.Eleves.Include(e => e.Notes).Include(e => e.Absences);              
+            return _context.Eleves.Include(e => e.Notes).Include(e => e.Absences).Include(e => e.Classe);              
         }
 
         public IQueryable<Eleve> GetById(int id)
