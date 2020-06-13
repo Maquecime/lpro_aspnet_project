@@ -10,6 +10,7 @@
 
             function getData() {
                 dataService.getEleves().then(function (result) {
+                    console.log(result);
                     $scope.eleves = result;
                 });
             };

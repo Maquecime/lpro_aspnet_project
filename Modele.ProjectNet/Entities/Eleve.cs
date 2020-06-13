@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace Model.ProjectNet.Entities
         public string Prenom { get; set; }
 
         [Required]
+        [JsonProperty]
+        [JsonConverter(typeof(IsoDateTimeConverter))]
         public DateTime DateNaissance { get; set; }
 
         public int ClasseId { get; set; }

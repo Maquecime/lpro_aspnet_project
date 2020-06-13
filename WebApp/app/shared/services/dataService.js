@@ -9,7 +9,7 @@
             service.getEleves = function () {
                 let deferred = $q.defer();
                 $http.get('/EleveAg/Index').then(function (result) {
-                    deferred.resolve(result.data);
+                    deferred.resolve(JSON.parse(result.data));
                 }, function () {
                     deferred.reject();
                 });

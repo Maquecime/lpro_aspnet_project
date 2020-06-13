@@ -16,7 +16,7 @@
                 <tr ng-repeat="e in eleves">
                     <td>{{ e.Nom }}</td>
                     <td>{{ e.Prenom }}</td>
-                    <td>{{ e.DateNaissance }}</td>
+                    <td>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</td>
                 </tr>
                 <tr ng-if="!eleves || eleves.length == 0">
                     <td colspan="3" style="text-align:center;">

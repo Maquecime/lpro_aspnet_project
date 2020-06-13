@@ -1,8 +1,7 @@
 ﻿using Model.ProjectNet;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Collections;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -20,7 +19,12 @@ namespace WebApp.Controllers
         public JsonResult Index()
         {
             var eleves = db.Eleves.ToList();
-            return Json(eleves, JsonRequestBehavior.AllowGet);
+            ArrayList elevesFin = new ArrayList();
+            eleves.ForEach(e =>
+                elevesFin.Add(JsonConvert.SerializeObject(e))
+            );
+
+            return Json(JsonConvert.SerializeObject(eleves), JsonRequestBehavior.AllowGet);
         }
     }
 }
