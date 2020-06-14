@@ -1,31 +1,64 @@
 ﻿<h2>Eleves</h2>
-<a href="#/addeleve" class="btn btn-primary">Create</a>
+<p>
+    <a href="#/addeleve" class="btn btn-primary">Create</a>
+</p>
 <div class="panel panel-default">
     <div class="panel-heading">
         Liste des élèves
     </div>
     <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group pull-left">
+                    <label>Search</label>
+                    <label>
+                        <input type="text" class="form-control" ng-model="searchText" />
+                    </label>
+                </div>
+            </div>
+        </div>
         <table class="table table-bordered">
             <thead>
                <tr>
-                   <th>Classe</th>
-                   <th>Nom</th>
-                   <th>Prenom</th>
-                   <th>Date de Naissance</th>
+                   <th ng-click=sortBy('Classe')>
+                        Classe
+                       <span class="glyphicon" ng-show="sortColumn=='Classe'" 
+                             ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
+                       </span>
+                   </th>
+                   <th ng-click=sortBy('Nom')>
+                       Nom
+                       <span class="glyphicon" ng-show="sortColumn=='Nom'"
+                             ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
+                       </span>
+                   </th>
+                   <th ng-click=sortBy('Prenom')>
+                       Prenom
+                       <span class="glyphicon" ng-show="sortColumn=='Prenom'"
+                             ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
+                       </span>
+                   </th>
+                   <th ng-click=sortBy('DateNaissance')>
+                       Date de Naissance
+                       <span class="glyphicon" ng-show="sortColumn=='DateNaissance'"
+                             ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
+                       </span>
+                   </th>
                    <th>#</th>
                </tr> 
             </thead>
             <tbody>
-                <tr ng-repeat="e in eleves">
+                <tr ng-repeat="e in eleves | filter: searchText | orderBy: sortColumn: reverse">
                     <td>{{ e.Classe.Niveau}} - {{ e.Classe.NomEtablissement }}</td>
                     <td>{{ e.Nom }}</td>
                     <td>{{ e.Prenom }}</td>
                     <td>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</td>
                     <td>
-                        <a href="#/editeleve/{{e.Id}}">Modifier</a>
+                        <a href="#/editeleve/{{e.Id}}">Modifier</a> | 
+                        <a href="" ng-click="deleteEleve(e.Id)">Supprimer</a>
                     </td>
                 </tr>
-                <tr ng-if="!eleves || eleves.length == 0">
+                <tr ng-if="!eleves || (eleves | filter: searchText).length == 0">
                     <td colspan="5" style="text-align:center;">
                         Aucun Eleve à afficher
                     </td>

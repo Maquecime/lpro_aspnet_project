@@ -15,6 +15,8 @@
         })
         .controller('eleveCtrl', ['$scope', 'dataService', function ($scope, dataService) {
             $scope.eleves = [];
+            $scope.sortColumn = "Classe";
+            $scope.reverse = true;
 
             getData();
 
@@ -24,7 +26,22 @@
                     $scope.eleves = result;
                 });
             };
+
+            $scope.deleteEleve = function (id) {
+                dataService.deleteEleve(id).then(function () {
+                    toastr.success("Eleve correctement supprimé");
+                    getData();
+                }, function () {
+                    toastr.error("Erreur durant la suppression de l'élève identifié par : " + id);
+                });
+            };
+
+            $scope.sortBy = function (columnName) {
+                $scope.sortColumn = columnName;
+                $scope.reverse = !$scope.reverse;
+            };
         }])
+
         .controller('eleveAddCtrl', ['$scope','$location', 'dataService', function ($scope, $location, dataService) {
             $scope.createEleve = function (eleve) {
                 dataService.addEleve(eleve).then(function () {
@@ -59,11 +76,14 @@
             };
 
             $scope.eleve = {};
-
+            $scope.states = {
+                showUpdateButton: false
+            };
 
             dataService.getEleveById($routeParams.id).then(function (result) {
                 console.log(result);
                 $scope.eleve = result;
+                $scope.states.showUpdateButton = true;
             }, function () {
                     toastr.error("Erreur de chargement de l'élève identifié par : " + $routeParams.id);
                     $location.path('/');

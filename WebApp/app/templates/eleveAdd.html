@@ -1,38 +1,53 @@
 ﻿<!DOCTYPE html>
 <h2>Create</h2>
-<form class="form-horizontal" ng-submit="createEleve(eleve)">
+<form class="form-horizontal" name="frmAddEleve" ng-submit="createEleve(eleve)" novalidate>
     <h4>Create a new Eleve</h4>
     <hr />
 
     <div class="form-group">
         <label class="col-lg-2 control-label">Nom</label>
         <div class="col-lg-10">
-            <input type="text" class="form-control" ng-model="eleve.Nom"/>
+            <input type="text" class="form-control" name="nom" ng-model="eleve.Nom" ng-maxlength="20" required/>
+            <span class="text-danger" ng-show="(frmAddEleve.nom.$touched || frmAddEleve.nom.$dirty) && frmAddEleve.nom.$invalid">
+                <span ng-show="frmAddEleve.nom.$error.required">Le nom est requis</span>
+                <span ng-show="frmAddEleve.nom.$error.maxlength">Le nom doit être inférieur à 20 caractères</span>
+            </span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">Prenom</label>
         <div class="col-lg-10">
-            <input type="text" class="form-control" ng-model="eleve.Prenom" />
+            <input type="text" class="form-control" name="prenom" ng-model="eleve.Prenom" ng-maxlength="20" required />
+            <span class="text-danger" ng-show="(frmAddEleve.prenom.$touched || frmAddEleve.prenom.$dirty) && frmAddEleve.prenom.$invalid">
+                <span ng-show="frmAddEleve.prenom.$error.required">Le prénom est requis</span>
+                <span ng-show="frmAddEleve.prenom.$error.maxlength">Le prénom doit être inférieur à 20 caractères</span>
+            </span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">Date de Naissance</label>
         <div class="col-lg-10">
-            <input type="date" class="form-control" ng-model="eleve.DateNaissance": />
+            <input type="date" class="form-control" name="datenaissance" ng-model="eleve.DateNaissance" required />
+            <span class="text-danger" ng-show="(frmAddEleve.datenaissance.$touched || frmAddEleve.datenaissance.$dirty) && frmAddEleve.datenaissance.$invalid">
+                <span ng-show="frmAddEleve.datenaissance.$error.required">La date de naissance est requise</span>
+            </span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">Classe</label>
         <select class="form-control col-lg-10"
+                name="classe"
                 data-ng-model="eleve.ClasseId"
-                data-ng-options='c.Id as (c.Niveau + " - " + c.NomEtablissement) for c in classes'>
+                data-ng-options='c.Id as (c.Niveau + " - " + c.NomEtablissement) for c in classes' required>
             <option value="">--Select Classe--</option>
         </select>
+        <span class="text-danger" ng-show="(frmAddEleve.classe.$touched || frmAddEleve.classe.$dirty) && frmAddEleve.classe.$invalid">
+            <span ng-show="frmAddEleve.classe.$error.required">La classe est requise</span>
+        </span>
     </div>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-            <input type="submit" class="btn btn-success" value="Valider" />
+            <input type="submit" class="btn btn-success" value="Valider" ng-disabled="frmAddEleve.$invalid" />
             <a href="#/" class="btn btn-default">Annuler</a>
         </div>
     </div>
