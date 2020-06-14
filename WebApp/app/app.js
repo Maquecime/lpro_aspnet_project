@@ -13,6 +13,10 @@
                     controller: 'eleveCtrl',
                     templateUrl: '/app/templates/eleves.html'
                 })
+                .when('/addeleve', {
+                    controller: 'eleveAddCtrl',
+                    templateUrl: '/app/templates/eleveAdd.html'
+                })
                 .otherwise({ redirectTo: '/' });
         }]);
 })();

@@ -139,6 +139,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\eleveCtrl.js" />
     <Content Include="app\shared\services\dataService.js" />
+    <Content Include="app\templates\eleveAdd.html" />
     <Content Include="app\templates\eleves.html" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />

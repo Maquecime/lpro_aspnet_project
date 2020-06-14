@@ -1,4 +1,5 @@
 ﻿<h2>Eleves</h2>
+<a href="#/addeleve" class="btn btn-primary">Create</a>
 <div class="panel panel-default">
     <div class="panel-heading">
         Liste des élèves
@@ -7,6 +8,7 @@
         <table class="table table-bordered">
             <thead>
                <tr>
+                   <th>Classe</th>
                    <th>Nom</th>
                    <th>Prenom</th>
                    <th>Date de Naissance</th>
@@ -14,6 +16,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="e in eleves">
+                    <td>{{ e.Classe.Niveau}} - {{ e.Classe.NomEtablissement }}</td>
                     <td>{{ e.Nom }}</td>
                     <td>{{ e.Prenom }}</td>
                     <td>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</td>
