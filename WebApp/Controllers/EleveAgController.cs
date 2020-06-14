@@ -33,11 +33,13 @@ namespace WebApp.Controllers
             }), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Details(int id)
+        public JsonResult Detail(int id)
         {
-            var eleve = db.Eleves.Find(id);
+            Eleve eleve = db.Eleves.Include(e => e.Classe).FirstOrDefault(e => e.Id == id);
 
-            return Json(eleve, JsonRequestBehavior.AllowGet);
+            return Json(JsonConvert.SerializeObject(eleve, Formatting.Indented, new JsonSerializerSettings { 
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -52,7 +54,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public JsonResult Edit(Eleve eleve)
+        public JsonResult Edit([Bind(Include = "Id,Nom,Prenom,DateNaissance,ClasseId")] Eleve eleve)
         {
             db.Entry(eleve).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();

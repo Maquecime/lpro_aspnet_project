@@ -17,6 +17,10 @@
                     controller: 'eleveAddCtrl',
                     templateUrl: '/app/templates/eleveAdd.html'
                 })
+                .when('/editeleve/:id', {
+                    controller: 'eleveEditCtrl',
+                    templateUrl: '/app/templates/eleveEdit.html'
+                })
                 .otherwise({ redirectTo: '/' });
         }]);
 })();

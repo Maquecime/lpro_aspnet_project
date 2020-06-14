@@ -12,6 +12,7 @@
                    <th>Nom</th>
                    <th>Prenom</th>
                    <th>Date de Naissance</th>
+                   <th>#</th>
                </tr> 
             </thead>
             <tbody>
@@ -20,9 +21,12 @@
                     <td>{{ e.Nom }}</td>
                     <td>{{ e.Prenom }}</td>
                     <td>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</td>
+                    <td>
+                        <a href="#/editeleve/{{e.Id}}">Modifier</a>
+                    </td>
                 </tr>
                 <tr ng-if="!eleves || eleves.length == 0">
-                    <td colspan="3" style="text-align:center;">
+                    <td colspan="5" style="text-align:center;">
                         Aucun Eleve à afficher
                     </td>
                 </tr>

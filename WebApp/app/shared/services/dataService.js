@@ -18,7 +18,7 @@
 
             service.getEleveById = function (id) {
                 let deferred = $q.defer();
-                $http.get('/EleveAg/Detail' + id).then(function (result) {
+                $http.get('/EleveAg/Detail/' + id).then(function (result) {
                     deferred.resolve(JSON.parse(result.data));
                 }, function () {
                     deferred.reject();

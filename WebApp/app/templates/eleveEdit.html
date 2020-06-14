@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<h2>Edit</h2>
+<form class="form-horizontal" ng-submit="updateEleve(eleve)">
+    <h4>Update an Eleve</h4>
+    <hr />
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Nom</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="eleve.Nom" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Prenom</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="eleve.Prenom" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Date de Naissance</label>
+        <div class="col-lg-10">
+            <input type="date" class="form-control" ng-model="eleve.DateNaissance" format-date/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Classe</label>
+        <select class="form-control col-lg-10"
+                data-ng-model="eleve.ClasseId"
+                data-ng-options='c.Id as (c.Niveau + " - " + c.NomEtablissement) for c in classes'>
+            <option value="">--Select Classe--</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" class="btn btn-success" value="Valider" />
+            <a href="#/" class="btn btn-default">Annuler</a>
+        </div>
+    </div>
+</form>
