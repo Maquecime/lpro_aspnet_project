@@ -13,8 +13,10 @@
                 }
             }
         })
-        .controller('eleveCtrl', ['$scope', 'dataService', function ($scope, dataService) {
+        .controller('eleveCtrl', ['$scope','$filter', 'dataService', function ($scope,$filter ,dataService) {
             $scope.eleves = [];
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 5;
             $scope.sortColumn = "Classe";
             $scope.reverse = true;
 
@@ -23,7 +25,9 @@
             function getData() {
                 dataService.getEleves().then(function (result) {
                     console.log(result);
-                    $scope.eleves = result;
+                    $scope.$watch('searchText', function (term) {
+                        $scope.eleves = $filter('filter')(result, term);
+                    })
                 });
             };
 

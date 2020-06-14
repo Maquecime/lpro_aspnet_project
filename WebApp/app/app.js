@@ -4,7 +4,8 @@
     angular
         .module('app', [
             //Angular Modules
-            'ngRoute'
+            'ngRoute',
+            'ui.bootstrap'
         ]).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $locationProvider.hashPrefix('');
 
