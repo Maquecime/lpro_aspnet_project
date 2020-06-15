@@ -1,4 +1,6 @@
-﻿using Model.ProjectNet;
+﻿using BusinessLayer.ProjectNet.Commands;
+using BusinessLayer.ProjectNet.Queries;
+using Model.ProjectNet;
 using Model.ProjectNet.Entities;
 using Newtonsoft.Json;
 using System.Collections;
@@ -11,22 +13,34 @@ namespace WebApp.Controllers
     public class EleveAgController : Controller
     {
         private ProNetDbContext db;
+        private EleveQuery eleveQuery;
+        private ClasseQuery classeQuery;
+        private EleveCommand eleveCommand;
+        private ClasseCommand classeCommand;
 
         public EleveAgController()
         {
             db = new ProNetDbContext();
+            eleveQuery = new EleveQuery(db);
+            classeQuery = new ClasseQuery(db);
+            eleveCommand = new EleveCommand(db);
+            classeCommand = new ClasseCommand(db);
         }
 
         // GET: EleveAg
         public JsonResult Index()
         {
-            var eleves = db.Eleves.Include(e => e.Classe).ToList();
+            var eleves = eleveQuery.GetAll().ToList();
             ArrayList elevesFin = new ArrayList();
-            eleves.ForEach(e =>
-                elevesFin.Add(JsonConvert.SerializeObject(e, Formatting.Indented, new JsonSerializerSettings {
+
+            foreach (Eleve e in eleves)
+            {
+                e.Classe.Eleves = null;
+                elevesFin.Add(JsonConvert.SerializeObject(e, Formatting.Indented, new JsonSerializerSettings { 
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                }))
-            );
+                })) ;
+            }
+
 
             return Json(JsonConvert.SerializeObject(eleves, Formatting.Indented, new JsonSerializerSettings { 
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -35,7 +49,7 @@ namespace WebApp.Controllers
 
         public JsonResult Detail(int id)
         {
-            Eleve eleve = db.Eleves.Include(e => e.Classe).FirstOrDefault(e => e.Id == id);
+            Eleve eleve = eleveQuery.GetById(id).FirstOrDefault();
 
             return Json(JsonConvert.SerializeObject(eleve, Formatting.Indented, new JsonSerializerSettings { 
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -45,9 +59,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public JsonResult Create(Eleve eleve)
         {
-  
-            db.Eleves.Add(eleve);
-            db.SaveChanges();
+
+            eleveCommand.Ajouter(eleve);
 
 
             return Json(null);
@@ -56,23 +69,20 @@ namespace WebApp.Controllers
         [HttpPost]
         public JsonResult Edit([Bind(Include = "Id,Nom,Prenom,DateNaissance,ClasseId")] Eleve eleve)
         {
-            db.Entry(eleve).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            eleveCommand.Modifier(eleve);
             return Json(null);
         }
 
         [HttpPost]
         public JsonResult Delete(int id)
         {
-            var eleve = db.Eleves.Find(id);
-            db.Eleves.Remove(eleve);
-            db.SaveChanges();
+            eleveCommand.Supprimer(id);
             return Json(null);
         }
 
         public JsonResult GetClasses()
         {
-            var classeList = db.Classes.ToList();
+            var classeList = classeQuery.GetAll().ToList();
             ArrayList classeListFin = new ArrayList();
             classeList.ForEach(e =>
                 classeListFin.Add(JsonConvert.SerializeObject(e))

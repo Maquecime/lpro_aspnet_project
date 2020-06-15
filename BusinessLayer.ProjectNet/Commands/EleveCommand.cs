@@ -32,7 +32,7 @@ namespace BusinessLayer.ProjectNet.Commands
                 updEl.Nom = e.Nom;
                 updEl.Prenom = e.Prenom;
                 updEl.DateNaissance = e.DateNaissance;
-                updEl.Classe = e.Classe;
+                updEl.ClasseId = e.ClasseId;
             }
 
             _context.SaveChanges();
