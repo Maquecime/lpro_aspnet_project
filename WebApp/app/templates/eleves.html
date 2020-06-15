@@ -21,11 +21,11 @@
                     Voir
                     <label>
                         <select class="form-control" ng-model="itemsPerPage" style="font-weight: normal">
-                            <option ng-value="5">5</option>
-                            <option ng-value="10">10</option>
-                            <option ng-value="15">15</option>
-                            <option ng-value="20">20</option>
-                            <option ng-value="50">50</option>
+                            <option ng-value="6">6</option>
+                            <option ng-value="12">12</option>
+                            <option ng-value="18">18</option>
+                            <option ng-value="24">24</option>
+                            <option ng-value="30">30</option>
                         </select>
                     </label>
                     Résultats
@@ -35,6 +35,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Trier par</th>
                     <th ng-click=sortBy('Classe')>
                         Classe
                         <span class="glyphicon" ng-show="sortColumn=='Classe'"
@@ -59,27 +60,33 @@
                               ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
                         </span>
                     </th>
-                    <th>#</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-repeat="e in eleves | orderBy: sortColumn: reverse | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage ">
-                    <td>{{ e.Classe.Niveau}} - {{ e.Classe.NomEtablissement }}</td>
-                    <td>{{ e.Nom }}</td>
-                    <td>{{ e.Prenom }}</td>
-                    <td>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</td>
-                    <td>
-                        <a href="#/editeleve/{{e.Id}}">Modifier</a> |
-                        <a href="" ng-click="deleteEleve(e.Id)">Supprimer</a>
-                    </td>
-                </tr>
-                <tr ng-if="!eleves || eleves.length == 0">
-                    <td colspan="5" style="text-align:center;">
-                        Aucun Eleve à afficher
-                    </td>
-                </tr>
-            </tbody>
         </table>
+        <section class="our-webcoderskull padding-lg">
+            <div class="container card-container">
+                <ul class="row">
+                    <li class="col-12 col-md-3 col-lg-2" ng-repeat="e in eleves | orderBy: sortColumn: reverse | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage ">
+                        <div class="cnt-block equal-hight" style="height: 349px;">
+                            <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
+                            <h3>{{ e.Prenom }} {{ e.Nom }}</h3>
+                            <p>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</p>
+                            <p>{{ e.Classe.Niveau}} - {{ e.Classe.NomEtablissement }}</p>
+                            <ul class="follow-us clearfix">
+                                <li><a href="#/editeleve/{{e.Id}}"><i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Modifier" aria-hidden="true"></i></a></li>
+                                <li><a href="#" ng-click="deleteEleve(e.Id)" data-toggle="tooltip" title="Supprimer"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="Ajouter une note"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" ng-if="!eleves || eleves.length == 0">
+                <p style="width:100%; text-align:center; color:white; font-weight:bold">
+                    Aucun Eleve à afficher
+                </p>
+            </div>
+        </section>
         <div class="row">
             <div class="col-lg-6">
                 <div class="pull-left">

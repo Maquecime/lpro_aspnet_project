@@ -16,7 +16,7 @@
         .controller('eleveCtrl', ['$scope','$filter', 'dataService', function ($scope,$filter ,dataService) {
             $scope.eleves = [];
             $scope.currentPage = 1;
-            $scope.itemsPerPage = 5;
+            $scope.itemsPerPage = 6;
             $scope.sortColumn = "Classe";
             $scope.reverse = true;
 
