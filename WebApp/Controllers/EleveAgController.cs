@@ -31,14 +31,10 @@ namespace WebApp.Controllers
         public JsonResult Index()
         {
             var eleves = eleveQuery.GetAll().ToList();
-            ArrayList elevesFin = new ArrayList();
 
             foreach (Eleve e in eleves)
             {
                 e.Classe.Eleves = null;
-                elevesFin.Add(JsonConvert.SerializeObject(e, Formatting.Indented, new JsonSerializerSettings { 
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                })) ;
             }
 
 

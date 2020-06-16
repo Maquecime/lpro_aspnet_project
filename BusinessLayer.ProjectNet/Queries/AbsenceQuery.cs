@@ -2,6 +2,7 @@
 using Model.ProjectNet.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace BusinessLayer.ProjectNet.Queries
 
         public IQueryable<Absence> GetAll()
         {
-            return _context.Absences;
+            return _context.Absences.Include(a => a.Eleve);
         }
 
         public IQueryable<Absence> GetById(int id)

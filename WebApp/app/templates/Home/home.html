@@ -1,0 +1,59 @@
+﻿<h2>Accueil</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Liste des meilleurs élèves
+    </div>
+    <div class="panel-body">
+        <div class="row">
+        </div>
+        <section class="our-webcoderskull padding-lg">
+            <div class="container card-container">
+                <ul class="row">
+                    <li class="col-12 col-md-3 col-lg-2" ng-repeat="e in eleves">
+                        <div class="cnt-block equal-hight" style="height: 349px;">
+                            <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
+                            <h3>{{ e.Prenom }} {{ e.Nom }}</h3>
+                            <p>{{ e.DateNaissance | date:"dd/MM/yyyy" }}</p>
+                            <p>{{ e.Classe.Niveau}} - {{ e.Classe.NomEtablissement }}</p>
+                            <p>Moyenne : {{ e.moy }} ({{e.nbNotes}} notes)</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" ng-if="!eleves || eleves.length == 0">
+                <p style="width:100%; text-align:center; color:white; font-weight:bold">
+                    Aucun Eleve à afficher
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Liste des dernières absences
+    </div>
+    <div class="panel-body">
+        <div class="row">
+        </div>
+        <section class="our-webcoderskull padding-lg">
+            <div class="container card-container">
+                <ul class="row">
+                    <li class="col-12 col-md-3 col-lg-2" ng-repeat="a in absences ">
+                        <div class="cnt-block equal-hight" style="height: 349px;">
+                            <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
+                            <h3>Motif : {{ a.Motif }}</h3>
+                            <p>Date: {{ a.DateAbsence | date:"dd/MM/yyyy" }}</p>
+                            <p>{{ a.Eleve.Prenom}} - {{ a.Eleve.Nom }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" ng-if="!absences || absences.length == 0">
+                <p style="width:100%; text-align:center; color:white; font-weight:bold">
+                    Aucune absence à afficher
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

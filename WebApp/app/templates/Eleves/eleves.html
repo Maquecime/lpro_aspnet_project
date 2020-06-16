@@ -60,6 +60,12 @@
                               ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
                         </span>
                     </th>
+                    <th ng-click=sortBy('moy')>
+                        Moyenne
+                        <span class="glyphicon" ng-show="sortColumn=='moy'"
+                              ng-class="{'glyphicon-triangle-top': !reverse, 'glyphicon-triangle-bottom': reverse}">
+                        </span>
+                    </th>
                 </tr>
             </thead>
         </table>

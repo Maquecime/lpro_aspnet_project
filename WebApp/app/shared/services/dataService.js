@@ -78,6 +78,26 @@
                 return deferred.promise;
             }
 
+            service.getBestEleves = function () {
+                let deferred = $q.defer();
+                $http.get('/Home/GetBestEleves').then(function (result) {
+                    deferred.resolve(JSON.parse(result.data));
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+            service.getLatestAbsences = function () {
+                let deferred = $q.defer();
+                $http.get('/Home/GetLatestAbsences').then(function (result) {
+                    deferred.resolve(JSON.parse(result.data));
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            }
+
             return service;
         }]);
 })();

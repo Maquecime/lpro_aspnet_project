@@ -41,21 +41,26 @@
 
             $routeProvider
                 .when('/', {
+                    controller: 'homeCtrl',
+                    templateUrl: '/app/templates/Home/home.html',
+                    css: '/app/styles/eleves.css'
+                })
+                .when('/eleves', {
                     controller: 'eleveCtrl',
-                    templateUrl: '/app/templates/eleves.html',
+                    templateUrl: '/app/templates/Eleves/eleves.html',
                     css: '/app/styles/eleves.css'
                 })
                 .when('/addeleve', {
                     controller: 'eleveAddCtrl',
-                    templateUrl: '/app/templates/eleveAdd.html'
+                    templateUrl: '/app/templates/Eleves/eleveAdd.html'
                 })
                 .when('/editeleve/:id', {
                     controller: 'eleveEditCtrl',
-                    templateUrl: '/app/templates/eleveEdit.html'
+                    templateUrl: '/app/templates/Eleves/eleveEdit.html'
                 })
                 .when('/addnote/:id', {
                     controller: 'eleveAddNoteCtrl',
-                    templateUrl:'/app/templates/addNote.html'
+                    templateUrl:'/app/templates/Eleves/addNote.html'
                 })
                 .otherwise({ redirectTo: '/' });
         }]);
