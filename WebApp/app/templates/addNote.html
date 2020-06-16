@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<h2>Création</h2>
+<form class="form-horizontal" name="frmAddNote" ng-submit="addNote(note)" novalidate>
+    <h4>Ajouter une note à {{eleve.Prenom}} {{eleve.Nom}}</h4>
+    <hr />
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Matière</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" name="matiere" ng-model="note.Matiere" ng-maxlength="20" required />
+            <span class="text-danger" ng-show="(frmAddNote.matiere.$touched || frmAddNote.matiere.$dirty) && frmAddNote.matiere.$invalid">
+                <span ng-show="frmAddNote.matiere.$error.required">La matière est requise</span>
+                <span ng-show="frmAddNote.matiere.$error.maxlength">La matière doit être inférieur à 20 caractères</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Appréciation</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" name="appreciation" ng-model="note.Appreciation" ng-maxlength="50" />
+            <span class="text-danger" ng-show="(frmAddNote.appreciation.$touched || frmAddNote.appreciation.$dirty) && frmAddNote.appreciation.$invalid">
+                <span ng-show="frmAddNote.appreciation.$error.maxlength">L'appréciation être inférieure à 50 caractères</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Date</label>
+        <div class="col-lg-10">
+            <input type="date" class="form-control" name="datenote" ng-model="note.DateNote" ng-maxlength="20" required />
+            <span class="text-danger" ng-show="(frmAddNote.datenote.$touched || frmAddNote.datenote.$dirty) && frmAddNote.datenote.$invalid">
+                <span ng-show="frmAddNote.datenote.$error.required">La date est requise</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Note</label>
+        <div class="col-lg-10">
+            <input type="number" class="form-control" name="notevalue" ng-model="note.NoteValue" required min="0" max="20"/>
+            <span class="text-danger" ng-show="(frmAddNote.notevalue.$touched || frmAddNote.notevalue.$dirty) && frmAddNote.notevalue.$invalid">
+                <span ng-show="frmAddNote.notevalue.$error.required">La note est requise</span>
+                <span ng-show="frmAddNote.notevalue.$error.min">La note doit être supérieure à zéro</span>
+                <span ng-show="frmAddNote.notevalue.$error.max">La note doit être inférieure à 20</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" class="btn btn-success" value="Valider" ng-disabled="frmAddNote.$invalid" />
+            <a href="#/" class="btn btn-default">Annuler</a>
+        </div>
+    </div>
+</form>

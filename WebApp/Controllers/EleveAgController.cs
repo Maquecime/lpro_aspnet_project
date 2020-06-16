@@ -90,5 +90,18 @@ namespace WebApp.Controllers
 
             return Json(JsonConvert.SerializeObject(classeList), JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult AddNote(Note n, int eleveId)
+        {
+            n.EleveId = eleveId;
+
+            db.Notes.Add(n);
+
+            db.SaveChanges();
+
+            return Json(null);
+
+        }
     }
 }

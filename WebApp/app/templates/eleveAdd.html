@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
-<h2>Create</h2>
+<h2>Création</h2>
 <form class="form-horizontal" name="frmAddEleve" ng-submit="createEleve(eleve)" novalidate>
-    <h4>Create a new Eleve</h4>
+    <h4>Créer un nouvel Eleve</h4>
     <hr />
 
     <div class="form-group">
@@ -35,20 +35,22 @@
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">Classe</label>
-        <select class="form-control col-lg-10"
-                name="classe"
-                data-ng-model="eleve.ClasseId"
-                data-ng-options='c.Id as (c.Niveau + " - " + c.NomEtablissement) for c in classes' required>
-            <option value="">--Select Classe--</option>
-        </select>
-        <span class="text-danger" ng-show="(frmAddEleve.classe.$touched || frmAddEleve.classe.$dirty) && frmAddEleve.classe.$invalid">
-            <span ng-show="frmAddEleve.classe.$error.required">La classe est requise</span>
-        </span>
-    </div>
-    <div class="form-group">
-        <div class="col-lg-offset-2 col-lg-10">
-            <input type="submit" class="btn btn-success" value="Valider" ng-disabled="frmAddEleve.$invalid" />
-            <a href="#/" class="btn btn-default">Annuler</a>
+            <div class="col-lg-10">
+                <select class="form-control"
+                        name="classe"
+                        data-ng-model="eleve.ClasseId"
+                        data-ng-options='c.Id as (c.Niveau + " - " + c.NomEtablissement) for c in classes' required>
+                    <option value="">--Select Classe--</option>
+                </select>
+                <span class="text-danger" ng-show="(frmAddEleve.classe.$touched || frmAddEleve.classe.$dirty) && frmAddEleve.classe.$invalid">
+                    <span ng-show="frmAddEleve.classe.$error.required">La classe est requise</span>
+                </span>
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <input type="submit" class="btn btn-success" value="Valider" ng-disabled="frmAddEleve.$invalid" />
+                <a href="#/" class="btn btn-default">Annuler</a>
+            </div>
+        </div>
 </form>

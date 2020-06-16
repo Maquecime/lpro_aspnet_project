@@ -53,6 +53,10 @@
                     controller: 'eleveEditCtrl',
                     templateUrl: '/app/templates/eleveEdit.html'
                 })
+                .when('/addnote/:id', {
+                    controller: 'eleveAddNoteCtrl',
+                    templateUrl:'/app/templates/addNote.html'
+                })
                 .otherwise({ redirectTo: '/' });
         }]);
 })();

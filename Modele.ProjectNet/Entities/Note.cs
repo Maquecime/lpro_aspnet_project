@@ -23,6 +23,7 @@ namespace Model.ProjectNet.Entities
         public string Appreciation { get; set; }
 
         [Required]
+        [Range(0, 20)]
         public int NoteValue { get; set; }
 
         public int EleveId { get; set; }

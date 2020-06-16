@@ -20,11 +20,21 @@
             $scope.sortColumn = "Classe";
             $scope.reverse = true;
 
+            const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
             getData();
 
             function getData() {
                 dataService.getEleves().then(function (result) {
-                    console.log(result);
+                    result.forEach((eleve, index) => {
+                        eleve.moy = 0;
+                        eleve.nbNotes = eleve.Notes.length;
+                        const noteValues = eleve.Notes.map(n => n.NoteValue);
+                        if (noteValues.length > 0) {
+                            eleve.moy = arrAvg(noteValues);
+                        }
+                    });
+
                     $scope.$watch('searchText', function (term) {
                         $scope.eleves = $filter('filter')(result, term);
                     })
@@ -99,6 +109,31 @@
                     $location.path('/');
                 }, function () {
                     toastr.error("Erreur durant la mise à jour de l'élève");
+                });
+            };
+        }])
+        .controller('eleveAddNoteCtrl', ['$scope', '$routeParams', '$location', 'dataService', function ($scope, $routeParams, $location, dataService) {
+            $scope.eleve = {};
+
+            $scope.states = {
+                showUpdateButton: false
+            };
+
+            dataService.getEleveById($routeParams.id).then(function (result) {
+                console.log(result);
+                $scope.eleve = result;
+                $scope.states.showUpdateButton = true;
+            }, function () {
+                toastr.error("Erreur de chargement de l'élève identifié par : " + $routeParams.id);
+                $location.path('/');
+            });
+
+            $scope.addNote = function (note) {
+                dataService.addNote(note, $routeParams.id).then(function () {
+                    toastr.success('Note correctement ajoutée');
+                    $location.path('/');
+                }, function () {
+                        toastr.error("Erreur d'ajout d'une note");
                 });
             };
         }]);

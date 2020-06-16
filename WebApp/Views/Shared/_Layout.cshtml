@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mon application ASP.NET</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/font-awesome")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#4545ca;">
+        <div class="container" style="width:85%;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#/" class="navbar-brand">Gestionnaire de classe</a>
+                <a href="#/" class="navbar-brand">Ma gestion scolaire</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#/">Accueil</a></li>
+                    <li><a href="#/">Eleves</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Classes</a></li>
                 </ul>
             </div>
         </div>
@@ -31,10 +34,16 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mon application ASP.NET</p>
-        </footer>
     </div>
+    <footer style="bottom: 0;
+        position:fixed;
+        padding: 10px;
+        background-color: #4545ca;
+        width: 100%;
+        color: white;
+        z-index: 25;">
+        <p>&copy; @DateTime.Now.Year - Mon application ASP.NET</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -140,6 +140,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\eleveCtrl.js" />
     <Content Include="app\shared\services\dataService.js" />
+    <Content Include="app\templates\addNote.html" />
     <Content Include="app\templates\eleveAdd.html" />
     <Content Include="app\templates\eleveEdit.html" />
     <Content Include="app\templates\eleves.html" />
@@ -157,6 +158,8 @@
     <Content Include="app\styles\eleves.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\bgeleve.jpg" />
+    <Content Include="Content\img\bgeleve2.jpg" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
