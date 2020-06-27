@@ -78,6 +78,18 @@
                 return deferred.promise;
             }
 
+            service.addAbsence = function (absence, id) {
+                var deferred = $q.defer();
+                console.log(absence);
+                console.log(id);
+                $http.post('/EleveAg/AddAbsence', { a: absence, eleveId: id }).then(function (result) {
+                    deferred.resolve();
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            }
+
             service.getBestEleves = function () {
                 let deferred = $q.defer();
                 $http.get('/Home/GetBestEleves').then(function (result) {

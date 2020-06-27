@@ -62,6 +62,16 @@
                     controller: 'eleveAddNoteCtrl',
                     templateUrl:'/app/templates/Eleves/addNote.html'
                 })
+                .when('/addabsence/:id', {
+                    controller: 'eleveAddAbsenceCtrl',
+                    templateUrl: '/app/templates/Eleves/addAbsence.html'
+                })
+                .when('/elevedetail/:id', {
+                    controller: 'eleveDetailCtrl',
+                    templateUrl: '/app/templates/Eleves/eleveDetail.html',
+                    css: '/app/styles/eleveDetail.css'
+
+                })
                 .otherwise({ redirectTo: '/' });
         }]);
 })();

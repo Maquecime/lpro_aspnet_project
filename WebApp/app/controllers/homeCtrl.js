@@ -18,7 +18,7 @@
                         eleve.nbNotes = eleve.Notes.length;
                         const noteValues = eleve.Notes.map(n => n.NoteValue);
                         if (noteValues.length > 0) {
-                            eleve.moy = arrAvg(noteValues);
+                            eleve.moy = arrAvg(noteValues).toFixed(2);
                         }
                     });
 

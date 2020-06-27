@@ -1,0 +1,53 @@
+﻿<div class="container portfolio">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading">
+                <img src="https://image.ibb.co/cbCMvA/logo.png" />
+            </div>
+        </div>
+    </div>
+    <div class="bio-info">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bio-image">
+                            <img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bio-content">
+                    <h1>{{ eleve.Prenom }} {{ eleve.Nom }}</h1>
+                    <h6>Né(e) le : {{ eleve.DateNaissance | date:"dd/MM/yyyy" }}</h6>
+                    <h6>Classe : {{ eleve.Classe.Niveau}} - {{ eleve.Classe.NomEtablissement }}</h6>
+                    <h6>Moyenne : {{ eleve.moy }} ({{eleve.nbNotes}} notes)</h6>
+                    <h6>Nombre d'absences : {{ eleve.nbAbsences }}</h6>
+                    <div class="row lists">
+                        <div class="span6">
+                            <div class="mycontent-left col-md-6">
+                                Liste des notes
+                                <ul class="row">
+                                    <li ng-repeat="n in eleve.Notes ">
+                                        {{n.NoteValue}} 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="mycontent-right col-md-6">
+                                Liste des absences
+                                <ul class="row">
+                                    <li ng-repeat="a in eleve.Absences ">
+                                        {{a.Motif}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

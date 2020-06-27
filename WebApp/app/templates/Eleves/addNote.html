@@ -19,14 +19,14 @@
         <div class="col-lg-10">
             <input type="text" class="form-control" name="appreciation" ng-model="note.Appreciation" ng-maxlength="50" />
             <span class="text-danger" ng-show="(frmAddNote.appreciation.$touched || frmAddNote.appreciation.$dirty) && frmAddNote.appreciation.$invalid">
-                <span ng-show="frmAddNote.appreciation.$error.maxlength">L'appréciation être inférieure à 50 caractères</span>
+                <span ng-show="frmAddNote.appreciation.$error.maxlength">L'appréciation doit être inférieure à 50 caractères</span>
             </span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-lg-2 control-label">Date</label>
         <div class="col-lg-10">
-            <input type="date" class="form-control" name="datenote" ng-model="note.DateNote" ng-maxlength="20" required />
+            <input type="date" class="form-control" name="datenote" ng-model="note.DateNote" required />
             <span class="text-danger" ng-show="(frmAddNote.datenote.$touched || frmAddNote.datenote.$dirty) && frmAddNote.datenote.$invalid">
                 <span ng-show="frmAddNote.datenote.$error.required">La date est requise</span>
             </span>

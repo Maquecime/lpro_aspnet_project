@@ -141,8 +141,11 @@
     <Content Include="app\controllers\eleveCtrl.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\shared\services\dataService.js" />
+    <Content Include="app\styles\eleveDetail.css" />
+    <Content Include="app\templates\Eleves\addAbsence.html" />
     <Content Include="app\templates\Eleves\addNote.html" />
     <Content Include="app\templates\Eleves\eleveAdd.html" />
+    <Content Include="app\templates\Eleves\eleveDetail.html" />
     <Content Include="app\templates\Eleves\eleveEdit.html" />
     <Content Include="app\templates\Eleves\eleves.html" />
     <Content Include="app\templates\Home\home.html" />

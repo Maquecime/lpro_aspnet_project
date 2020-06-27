@@ -31,7 +31,7 @@
                         eleve.nbNotes = eleve.Notes.length;
                         const noteValues = eleve.Notes.map(n => n.NoteValue);
                         if (noteValues.length > 0) {
-                            eleve.moy = arrAvg(noteValues);
+                            eleve.moy = arrAvg(noteValues).toFixed(2);
                         }
                     });
 
@@ -136,5 +136,50 @@
                         toastr.error("Erreur d'ajout d'une note");
                 });
             };
+        }])
+        .controller('eleveAddAbsenceCtrl', ['$scope', '$routeParams', '$location', 'dataService', function ($scope, $routeParams, $location, dataService) {
+            $scope.eleve = {};
+
+            $scope.states = {
+                showUpdateButton: false
+            };
+
+            dataService.getEleveById($routeParams.id).then(function (result) {
+                console.log(result);
+                $scope.eleve = result;
+                $scope.states.showUpdateButton = true;
+            }, function () {
+                toastr.error("Erreur de chargement de l'élève identifié par : " + $routeParams.id);
+                $location.path('/');
+            });
+
+            $scope.addAbsence = function (absence) {
+                dataService.addAbsence(absence, $routeParams.id).then(function () {
+                    toastr.success('Absence correctement ajoutée');
+                    $location.path('/');
+                }, function () {
+                    toastr.error("Erreur d'ajout d'une absence");
+                });
+            };
+        }])
+        .controller('eleveDetailCtrl', ['$scope', '$routeParams', '$location', 'dataService', function ($scope, $routeParams, $location, dataService) {
+            $scope.eleve = {};
+
+            const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+            dataService.getEleveById($routeParams.id).then(function (result) {
+                console.log(result);
+                $scope.eleve = result;
+                $scope.eleve.moy = 0;
+                $scope.eleve.nbNotes = $scope.eleve.Notes.length;
+                $scope.eleve.nbAbsences = $scope.eleve.Absences.length;
+                const noteValues = $scope.eleve.Notes.map(n => n.NoteValue);
+                if (noteValues.length > 0) {
+                    $scope.eleve.moy = arrAvg(noteValues).toFixed(2);
+                }
+            }, function () {
+                toastr.error("Erreur de chargement de l'élève identifié par : " + $routeParams.id);
+                $location.path('/');
+            });
         }]);
 })();

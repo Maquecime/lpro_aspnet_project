@@ -38,13 +38,9 @@ namespace WebApp.Controllers
 
             var elevesSorted = (from e in eleves
                                 where e.Notes.Count > 0
-                                orderby e.Notes.Average(n => n.NoteValue)
-                                select e).ToList();
+                                orderby e.Notes.Average(n => n.NoteValue) descending
+                                select e).Take(5).ToList();
 
-            if(elevesSorted.Count > 5 )
-            {
-                elevesSorted = elevesSorted.GetRange(0, 5);
-            }
 
             foreach (Eleve e in elevesSorted)
             {

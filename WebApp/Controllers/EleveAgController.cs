@@ -47,6 +47,8 @@ namespace WebApp.Controllers
         {
             Eleve eleve = eleveQuery.GetById(id).FirstOrDefault();
 
+            eleve.Classe.Eleves = null;
+
             return Json(JsonConvert.SerializeObject(eleve, Formatting.Indented, new JsonSerializerSettings { 
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             }), JsonRequestBehavior.AllowGet);
@@ -93,6 +95,19 @@ namespace WebApp.Controllers
             n.EleveId = eleveId;
 
             db.Notes.Add(n);
+
+            db.SaveChanges();
+
+            return Json(null);
+
+        }
+
+        [HttpPost]
+        public JsonResult AddAbsence(Absence a, int eleveId)
+        {
+            a.EleveId = eleveId;
+
+            db.Absences.Add(a);
 
             db.SaveChanges();
 
