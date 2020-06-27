@@ -58,6 +58,12 @@
                     controller: 'classeEditCtrl',
                     templateUrl: '/app/templates/Classes/classeEdit.html'
                 })
+                .when('/classedetail/:id', {
+                    controller: 'classeDetailCtrl',
+                    templateUrl: '/app/templates/Classes/classeDetail.html',
+                    css: '/app/styles/classeDetail.css'
+
+                })
                 .when('/eleves', {
                     controller: 'eleveCtrl',
                     templateUrl: '/app/templates/Eleves/eleves.html',

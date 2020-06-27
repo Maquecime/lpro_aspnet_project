@@ -1,0 +1,13 @@
+﻿<h2>Eleves</h2>
+
+<div class="container detail">
+
+    <div class="row">
+        <ul class="list-group">
+            <li ng-repeat="e in classe.Eleves" class="list-group-item">
+                <a href="#/elevedetail/{{e.Id}}">{{e.Nom}} - {{e.Prenom}}</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

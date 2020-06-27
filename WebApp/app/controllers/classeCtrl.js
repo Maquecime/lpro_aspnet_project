@@ -64,5 +64,17 @@
                     toastr.error("Erreur durant la mise à jour de la classe");
                 });
             };
+        }])
+        .controller('classeDetailCtrl', ['$scope', '$routeParams', '$location', 'dataService', function ($scope, $routeParams, $location, dataService) {
+            $scope.classe = {};
+
+            dataService.getClasseById($routeParams.id).then(function (result) {
+                $scope.classe = result;
+                $scope.classe.nbEleves = $scope.classe.Eleves.length;
+
+            }, function () {
+                toastr.error("Erreur de chargement de la classe identifiée par : " + $routeParams.id);
+                $location.path('/classes');
+            });
         }]);
 })();

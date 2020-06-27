@@ -143,8 +143,10 @@
     <Content Include="app\controllers\eleveCtrl.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\shared\services\dataService.js" />
+    <Content Include="app\styles\classeDetail.css" />
     <Content Include="app\styles\eleveDetail.css" />
     <Content Include="app\templates\Classes\classeAdd.html" />
+    <Content Include="app\templates\Classes\classeDetail.html" />
     <Content Include="app\templates\Classes\classeEdit.html" />
     <Content Include="app\templates\Classes\classes.html" />
     <Content Include="app\templates\Eleves\addAbsence.html" />
