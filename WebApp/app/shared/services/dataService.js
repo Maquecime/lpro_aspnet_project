@@ -110,6 +110,57 @@
                 return deferred.promise;
             }
 
+            service.getClassesView = function () {
+                let deferred = $q.defer();
+                $http.get('/Classe/Index').then(function (result) {
+                    deferred.resolve(JSON.parse(result.data));
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+            service.addClasse = function (classe) {
+                var deferred = $q.defer();
+                $http.post('/Classe/Create', classe).then(function () {
+                    deferred.resolve();
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+
+            service.editClasse = function (classe) {
+                var deferred = $q.defer();
+                $http.post('/Classe/Edit', classe).then(function () {
+                    deferred.resolve();
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+            service.getClasseById = function (id) {
+                let deferred = $q.defer();
+                $http.get('/Classe/Detail/' + id).then(function (result) {
+                    deferred.resolve(JSON.parse(result.data));
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+            service.deleteClasse = function (id) {
+                var deferred = $q.defer();
+                $http.post('/Classe/Delete', { id: id }).then(function () {
+                    deferred.resolve();
+                }, function () {
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
             return service;
         }]);
 })();

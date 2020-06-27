@@ -60,7 +60,7 @@
             $scope.createEleve = function (eleve) {
                 dataService.addEleve(eleve).then(function () {
                     toastr.success('Eleve correctement crée !');
-                    $location.path('/');
+                    $location.path('/eleves');
                 }, function () {
                     toastr.error("Erreur de création de l'élève")
                 });

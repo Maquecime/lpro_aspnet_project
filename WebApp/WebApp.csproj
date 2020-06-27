@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClasseController.cs" />
     <Compile Include="Controllers\EleveAgController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -138,10 +139,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\classeCtrl.js" />
     <Content Include="app\controllers\eleveCtrl.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\shared\services\dataService.js" />
     <Content Include="app\styles\eleveDetail.css" />
+    <Content Include="app\templates\Classes\classeAdd.html" />
+    <Content Include="app\templates\Classes\classeEdit.html" />
+    <Content Include="app\templates\Classes\classes.html" />
     <Content Include="app\templates\Eleves\addAbsence.html" />
     <Content Include="app\templates\Eleves\addNote.html" />
     <Content Include="app\templates\Eleves\eleveAdd.html" />
@@ -165,6 +170,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\bgeleve.jpg" />
     <Content Include="Content\img\bgeleve2.jpg" />
+    <Content Include="Content\img\ecole.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />

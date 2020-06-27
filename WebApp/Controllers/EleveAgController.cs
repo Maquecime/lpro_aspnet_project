@@ -81,12 +81,13 @@ namespace WebApp.Controllers
         public JsonResult GetClasses()
         {
             var classeList = classeQuery.GetAll().ToList();
-            ArrayList classeListFin = new ArrayList();
-            classeList.ForEach(e =>
-                classeListFin.Add(JsonConvert.SerializeObject(e))
-            );
 
-            return Json(JsonConvert.SerializeObject(classeList), JsonRequestBehavior.AllowGet);
+
+            return Json(JsonConvert.SerializeObject(classeList, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }), JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpPost]

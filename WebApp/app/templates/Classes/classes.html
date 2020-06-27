@@ -1,0 +1,36 @@
+﻿<h2>Accueil</h2>
+<p>
+    <a href="#/addclasse" class="btn btn-primary">Ajouter</a>
+</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Liste des classes
+    </div>
+    <div class="panel-body">
+        <div class="row">
+        </div>
+        <section class="our-webcoderskull padding-lg">
+            <div class="container card-container">
+                <ul class="row">
+                    <li class="col-12 col-md-3 col-lg-2" ng-repeat="c in classes">
+                        <div class="cnt-block equal-hight" style="height: 349px;">
+                            <figure><img src="../../../Content/img/ecole.png" class="img-responsive" alt=""></figure>
+                            <h3>{{ c.NomEtablissement }} {{ c.Niveau }}</h3>
+                            <p>Nombre d'élèves : {{ c.nbEleves }} </p>
+                            <ul class="follow-us clearfix">
+                                <li><a href="#/editclasse/{{c.Id}}"><i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Modifier" aria-hidden="true"></i></a></li>
+                                <li><a href="#/classes" ng-click="deleteClasse(c.Id)" data-toggle="tooltip" title="Supprimer"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></li>
+                                <li><a href="#/classedetail/{{c.Id}}" data-toggle="tooltip" title="Voir le détail"><i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" ng-if="!classes || classes.length == 0">
+                <p style="width:100%; text-align:center; color:white; font-weight:bold">
+                    Aucune classe à afficher
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

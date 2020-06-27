@@ -45,6 +45,19 @@
                     templateUrl: '/app/templates/Home/home.html',
                     css: '/app/styles/eleves.css'
                 })
+                .when('/classes', {
+                    controller: 'classeCtrl',
+                    templateUrl: '/app/templates/Classes/classes.html',
+                    css: '/app/styles/eleves.css'
+                })
+                .when('/addclasse', {
+                    controller: 'classeAddCtrl',
+                    templateUrl: '/app/templates/Classes/classeAdd.html'
+                })
+                .when('/editclasse/:id', {
+                    controller: 'classeEditCtrl',
+                    templateUrl: '/app/templates/Classes/classeEdit.html'
+                })
                 .when('/eleves', {
                     controller: 'eleveCtrl',
                     templateUrl: '/app/templates/Eleves/eleves.html',

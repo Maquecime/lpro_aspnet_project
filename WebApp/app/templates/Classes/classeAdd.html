@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<h2>Création</h2>
+<form class="form-horizontal" name="frmAddClasse" ng-submit="createClasse(classe)" novalidate>
+    <h4>Créer une nouvelle Classe</h4>
+    <hr />
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Nom Etablissement</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" name="nom" ng-model="classe.NomEtablissement" ng-maxlength="40" required />
+            <span class="text-danger" ng-show="(frmAddClasse.nom.$touched || frmAddClasse.nom.$dirty) && frmAddClasse.nom.$invalid">
+                <span ng-show="frmAddClasse.nom.$error.required">Le nom de l'établissement est requis</span>
+                <span ng-show="frmAddClasse.nom.$error.maxlength">Le nom de l'établisement doit être inférieur à 40 caractères</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Niveau</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" name="niveau" ng-model="classe.Niveau" ng-maxlength="20" required />
+            <span class="text-danger" ng-show="(frmAddClasse.niveau.$touched || frmAddClasse.niveau.$dirty) && frmAddClasse.niveau.$invalid">
+                <span ng-show="frmAddClasse.niveau.$error.required">Le niveau est requis</span>
+                <span ng-show="frmAddClasse.niveau.$error.maxlength">Le niveau doit être inférieur à 20 caractères</span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" class="btn btn-success" value="Valider" ng-disabled="frmAddClasse.$invalid" />
+            <a href="#/classes" class="btn btn-default">Annuler</a>
+        </div>
+    </div>
+</form>
