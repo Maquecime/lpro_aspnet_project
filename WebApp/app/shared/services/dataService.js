@@ -68,8 +68,6 @@
 
             service.addNote = function (note, id) {
                 var deferred = $q.defer();
-                console.log(note);
-                console.log(id);
                 $http.post('/EleveAg/AddNote', { n: note, eleveId: id }).then(function (result) {
                     deferred.resolve();
                 }, function () {
@@ -80,8 +78,6 @@
 
             service.addAbsence = function (absence, id) {
                 var deferred = $q.defer();
-                console.log(absence);
-                console.log(id);
                 $http.post('/EleveAg/AddAbsence', { a: absence, eleveId: id }).then(function (result) {
                     deferred.resolve();
                 }, function () {

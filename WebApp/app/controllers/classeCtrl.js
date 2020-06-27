@@ -48,7 +48,6 @@
             };
 
             dataService.getClasseById($routeParams.id).then(function (result) {
-                console.log(result);
                 $scope.classe = result;
                 $scope.states.showUpdateButton = true;
             }, function () {

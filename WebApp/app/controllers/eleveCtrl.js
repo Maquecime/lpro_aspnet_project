@@ -72,7 +72,6 @@
 
             function getClassesData() {
                 dataService.getClasses().then(function (result) {
-                    console.log(result);
                     $scope.classes = result
                 });
             };
@@ -84,7 +83,6 @@
 
             function getClassesData() {
                 dataService.getClasses().then(function (result) {
-                    console.log(result);
                     $scope.classes = result
                 });
             };
@@ -95,7 +93,6 @@
             };
 
             dataService.getEleveById($routeParams.id).then(function (result) {
-                console.log(result);
                 $scope.eleve = result;
                 $scope.states.showUpdateButton = true;
             }, function () {
@@ -120,7 +117,6 @@
             };
 
             dataService.getEleveById($routeParams.id).then(function (result) {
-                console.log(result);
                 $scope.eleve = result;
                 $scope.states.showUpdateButton = true;
             }, function () {
@@ -145,7 +141,6 @@
             };
 
             dataService.getEleveById($routeParams.id).then(function (result) {
-                console.log(result);
                 $scope.eleve = result;
                 $scope.states.showUpdateButton = true;
             }, function () {
@@ -168,7 +163,6 @@
             const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
 
             dataService.getEleveById($routeParams.id).then(function (result) {
-                console.log(result);
                 $scope.eleve = result;
                 $scope.eleve.moy = 0;
                 $scope.eleve.nbNotes = $scope.eleve.Notes.length;

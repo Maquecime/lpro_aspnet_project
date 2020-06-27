@@ -28,7 +28,6 @@
 
             function getLatestAbsences() {
                 dataService.getLatestAbsences().then(function (result) {
-                    console.log(result);
                     $scope.absences = result;
                 })
             }
